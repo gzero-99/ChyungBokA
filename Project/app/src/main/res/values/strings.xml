@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">청소년 복지 모아!</string>
+    <string name="menu1">"복지 검색하기"</string>
+    <string name="menu2">"분류 별 검색하기"</string>
 </resources>
