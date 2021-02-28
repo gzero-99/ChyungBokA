@@ -1,26 +1,11 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <!--액션바 배경색-->
         <item name="colorPrimary">@color/colorPrimary</item>
         <!--시계부분 배경색-->
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-    </style>
-
-
-    <style name="AppTheme.MainTheme">
-        <item name="android:actionBarStyle">@style/MyActionBar</item>
-    </style>
-
-    <style name="MyActionBar" parent="@android:style/Widget.Holo.Light.ActionBar.Solid">
-        <item name="android:background">#00479b</item>
-        <item name="android:titleTextStyle">@style/ActionBarTextColor</item>
-    </style>
-
-    <!--액션바 텍스트 색상-->
-    <style name="ActionBarTextColor" parent="android:TextAppearance.Holo.Widget.ActionBar.Title">
-        <item name="android:textColor">@color/actionbar_text</item>
     </style>
 </resources>
