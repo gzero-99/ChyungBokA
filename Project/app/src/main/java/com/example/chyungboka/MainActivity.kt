@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setSupportActionBar(main_layout_toolbar)
         setFragment()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_baseline_menu_24)
+        //supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_baseline_menu_24)
 
         main_navigationView.setNavigationItemSelectedListener(this)
     }
