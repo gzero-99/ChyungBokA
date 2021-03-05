@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setFragment()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         //supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_baseline_menu_24)
-        //toolbar branch 사용하기
+
         main_navigationView.setNavigationItemSelectedListener(this)
     }
 
