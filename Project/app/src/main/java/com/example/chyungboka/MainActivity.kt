@@ -2,6 +2,7 @@ package com.example.chyungboka
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
@@ -26,6 +27,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         main_navigationView.setNavigationItemSelectedListener(this)
     }
 
+    //툴바에 홈키 만들기기
+   override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.toolbar_menu, menu)
+        return true
+    }
+
     //navigation창을 열었을 때 뒤로가기 누를때
     override fun onBackPressed() {
         if(main_drawer_layout.isDrawerOpen(GravityCompat.START)){
@@ -38,11 +45,17 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         else super.onBackPressed()
     }
 
-    //버튼 누르면 네비게이션 열기
+    //버튼 누르면 네비게이션 열기 및 홈으로
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
+            //네비게이션 바 열기
             android.R.id.home->{
                 main_drawer_layout.openDrawer(GravityCompat.START)
+            }
+            //home fragment로 이동
+            R.id.go_home->{
+                home=0
+                supportFragmentManager.beginTransaction().replace(R.id.home_frame,fragment_home).commit()
             }
         }
         return super.onOptionsItemSelected(item)
