@@ -1,21 +1,56 @@
 package com.example.chyungboka
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.viewpager.widget.PagerAdapter
+import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_home.view.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
-private const val ViewFlipper v_fllipper;
+
 /**
  * A simple [Fragment] subclass.
  * Use the [HomeFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
+class  Image(
+    var image: String
+){
+    fun getImageId(context: Context):Int{
+        return context.resources.getIdentifier(image,"drawable",context.packageName)
+    }
+}
+
+class ImagePagerAdapter(private val list:ArrayList<Image>):PagerAdapter(){
+    override fun instantiateItem(container: ViewGroup,position: Int):Any{
+        val inflater = LayoutInflater.from(container.context)
+        val view=inflater.inflate(R.layout.fragment_home,container,false)
+
+        view.imageView.setImageResource(list[position].getImageId(container.context))
+
+        container.addView(view)
+        return view
+    }
+
+    override fun destroyItem(container: ViewGroup, position: Int, obj: Any){
+        container.removeView(obj as View?)
+
+    }
+    override fun isViewFromObject(view: View , obj:Any):Boolean{
+        return view==obj
+    }
+
+    override fun getCount():Int{
+        return list.size
+    }
+}
 class HomeFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
@@ -27,12 +62,8 @@ class HomeFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
-        int images[]={
-            R.drawable.p1,
-            R.drawable.p2,
-            R.drawable.p3,
-            R.drawable.p4
-        };
+        val adapter=ImagePagerAdapter(imglist)
+        mViewPager.adapter=adapter
 
     }
 
@@ -62,5 +93,11 @@ class HomeFragment : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+        val imglist= arrayListOf(
+            Image("p1"),
+            Image("p2"),
+            Image("p3"),
+            Image("p4")
+        )
     }
 }
