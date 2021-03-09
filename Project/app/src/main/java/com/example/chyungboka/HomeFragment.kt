@@ -6,9 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.viewpager.widget.PagerAdapter
+import androidx.viewpager.widget.ViewPager
+import kotlinx.android.synthetic.main.banner_image_layout.view.*
 import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.fragment_home.view.*
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -20,35 +23,47 @@ private const val ARG_PARAM2 = "param2"
  * Use the [HomeFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class  Image(
-    var image: String
-){
-    fun getImageId(context: Context):Int{
-        return context.resources.getIdentifier(image,"drawable",context.packageName)
-    }
-}
+// 데이터 리소스로부터 페이지뷰를 생성하는 코드 (PagerAdapger 상속)
+class ViewPagerAdapter(private val context:Context):PagerAdapter(){
+    private var layoutInflater :LayoutInflater?=null
 
-class ImagePagerAdapter(private val list:ArrayList<Image>):PagerAdapter(){
-    override fun instantiateItem(container: ViewGroup,position: Int):Any{
-        val inflater = LayoutInflater.from(container.context)
-        val view=inflater.inflate(R.layout.fragment_home,container,false)
+    val Image = arrayOf(
+        R.drawable.p1,
+        R.drawable.p2,
+        R.drawable.p3,
+        R.drawable.p4
+    )
 
-        view.imageView.setImageResource(list[position].getImageId(container.context))
-
-        container.addView(view)
-        return view
+    //페이지 뷰가 특정 키 객체와 연관되는 지 여부
+    override fun isViewFromObject(view:View,`object`: Any):Boolean{
+        return view === `object`
     }
 
-    override fun destroyItem(container: ViewGroup, position: Int, obj: Any){
-        container.removeView(obj as View?)
-
-    }
-    override fun isViewFromObject(view: View , obj:Any):Boolean{
-        return view==obj
+    //사용 가능한 뷰의 개수를 리턴 (뷰 페이저의 전체 페이지 수 결정)
+    override fun getCount(): Int {
+        return Image.size
     }
 
-    override fun getCount():Int{
-        return list.size
+    //position에 해당하는 페이지 생성 (화면에 표시할 페이지뷰 생성)
+    override fun instantiateItem(container: ViewGroup, position: Int): Any {
+        //xml 에 미리 정의해둔 틀을 실제 메모리에 올려준다 (부플린다는 뜻)
+        //xml에 정의된 리소스를 view객체로 반환해줌
+        layoutInflater=context.getSystemService(Context.LAYOUT_INFLATER_SERVICE)as LayoutInflater
+        val v = layoutInflater!!.inflate(R.layout.banner_image_layout,null)//페이지 레이아웃 리소스
+        val image = v.findViewById<View>(R.id.imageView) as ImageView
+
+        image.setImageResource(Image[position])
+        val vp = container as ViewPager
+        vp.addView(v,0) //뷰페이저에 추가
+
+        return v
+    }
+
+    //position 위치의페이지 제거
+    override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
+        val vp = container as ViewPager
+        val v = `object` as View
+        vp.removeView(v)
     }
 }
 class HomeFragment : Fragment() {
@@ -56,16 +71,24 @@ class HomeFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    internal lateinit var viewpager :ViewPager
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
-        val adapter=ImagePagerAdapter(imglist)
-        mViewPager.adapter=adapter
+
+        //viewpager = findViewById(R.id.mViewPager) as ViewPager
+
+        //fragment에서 this가 안됨 -> activity()사용!!
+       // val pageadapter = ViewPagerAdapter(this)
+        val pageadapter = ViewPagerAdapter(this) //tq
+        mViewPager.adapter=pageadapter
 
     }
+//https://philosopher-chan.tistory.com/282
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -93,11 +116,6 @@ class HomeFragment : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
-        val imglist= arrayListOf(
-            Image("p1"),
-            Image("p2"),
-            Image("p3"),
-            Image("p4")
-        )
+
     }
 }
