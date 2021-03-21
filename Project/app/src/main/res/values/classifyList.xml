@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="target">
+        <item>해당없음</item>
+        <item>여성</item>
+        <item>임산부</item>
+        <item>장애</item>
+        <item>국가유공자 등 보훈 대상자</item>
+        <item>실업자</item>
+    </string-array>
+    
+    <string-array name="household">
+        <item>해당없음</item>
+        <item>한부모</item>
+        <item>다문화</item>
+        <item>조손</item>
+        <item>새터민</item>
+        <item>소년소녀가장</item>
+    </string-array>
+
+    <string-array name="field">
+        <item>안전</item>
+        <item>건강</item>
+        <item>일상생활유지</item>
+        <item>가족관계</item>
+        <item>사회적 관계</item>
+        <item>경제</item>
+        <item>교육</item>
+        <item>고용</item>
+        <item>생활환경</item>
+        <item>법률 및 권익보장</item>
+        <item>기타</item>
+    </string-array>
+
+    <string-array name="disability">
+        <item>지체</item>
+        <item>시각</item>
+        <item>청각</item>
+        <item>언어</item>
+        <item>지적</item>
+        <item>뇌병변</item>
+        <item>자폐성</item>
+        <item>정신</item>
+        <item>신장</item>
+        <item>심장</item>
+        <item>호흡기</item>
+        <item>간</item>
+        <item>안면</item>
+        <item>장루</item>
+        <item>간질</item>
+    </string-array>
+
+    <string-array name="disabilityLevel">
+        <item>심한 장애</item>
+        <item>심하지 않은 장애</item>
+    </string-array>
+</resources>
