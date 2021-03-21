@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--분류 별 검색 리스트-->
     <string-array name="target">
         <item>해당없음</item>
         <item>여성</item>
@@ -51,7 +52,11 @@
     </string-array>
 
     <string-array name="disabilityLevel">
-        <item>심한 장애</item>
-        <item>심하지 않은 장애</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
     </string-array>
 </resources>

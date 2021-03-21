@@ -31,9 +31,19 @@ class ClassifyFragment : Fragment() {
     ): View? {
         val view=inflater.inflate(R.layout.fragment_classify,container,false)
 
-        var target_data=listOf("- 선택하세요 -","해당없음","여성","임산부","장애","국가유공자 등 보훈 대상자","실업자")
+        //대상 특성 어댑터 연결
+        var target_data=resources.getStringArray(R.array.target)
         var adapter1=ArrayAdapter<String>(view.context,android.R.layout.simple_list_item_1,target_data)
         view.target_spinner.adapter=adapter1
+
+        //가구유형 어댑터 연결
+        var adapter2=ArrayAdapter<String>(view.context,android.R.layout.simple_list_item_1,resources.getStringArray(R.array.household))
+        view.house_spinner.adapter=adapter2
+
+        //분야 어댑터 연결
+        var adapter3=ArrayAdapter<String>(view.context,android.R.layout.simple_list_item_1,resources.getStringArray(R.array.field))
+        view.field_spinner.adapter=adapter3
+
         return view
     }
 }
