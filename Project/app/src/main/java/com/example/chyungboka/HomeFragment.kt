@@ -48,7 +48,6 @@ class ViewPagerAdapter(private val context:Context):PagerAdapter(){
         image.setImageResource(Image[position])
         val vp = container as ViewPager
         vp.addView(v,0) //뷰페이저에 추가
-
         return v
     }
 
