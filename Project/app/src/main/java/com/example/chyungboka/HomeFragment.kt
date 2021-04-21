@@ -16,48 +16,6 @@ import kotlinx.android.synthetic.main.fragment_home.view.*
  * Use the [HomeFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-// 데이터 리소스로부터 페이지뷰를 생성하는 코드 (PagerAdapger 상속)
-class ViewPagerAdapter(private val context:Context):PagerAdapter(){
-    private var layoutInflater :LayoutInflater?=null
-
-    val Image = arrayOf(
-        R.drawable.p1,
-        R.drawable.p2,
-        R.drawable.p3,
-        R.drawable.p4
-    )
-
-    //페이지 뷰가 특정 키 객체와 연관되는 지 여부
-    override fun isViewFromObject(view:View,`object`: Any):Boolean{
-        return view === `object`
-    }
-
-    //사용 가능한 뷰의 개수를 리턴 (뷰 페이저의 전체 페이지 수 결정)
-    override fun getCount(): Int {
-        return Image.size
-    }
-
-    //position에 해당하는 페이지 생성 (화면에 표시할 페이지뷰 생성)
-    override fun instantiateItem(container: ViewGroup, position: Int): Any {
-        //xml 에 미리 정의해둔 틀을 실제 메모리에 올려준다 (부플린다는 뜻)
-        //xml에 정의된 리소스를 view객체로 반환해줌
-        layoutInflater=context.getSystemService(Context.LAYOUT_INFLATER_SERVICE)as LayoutInflater
-        val v = layoutInflater!!.inflate(R.layout.banner_image_layout,null)//페이지 레이아웃 리소스
-        val image = v.findViewById<View>(R.id.imageView) as ImageView
-
-        image.setImageResource(Image[position])
-        val vp = container as ViewPager
-        vp.addView(v,0) //뷰페이저에 추가
-        return v
-    }
-
-    //position 위치의페이지 제거
-    override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
-        val vp = container as ViewPager
-        val v = `object` as View
-        vp.removeView(v)
-    }
-}
 class HomeFragment : Fragment() {
     //viewpager 설정
     var currentPosition =0
@@ -82,7 +40,6 @@ class HomeFragment : Fragment() {
         if(currentPosition==5) currentPosition=0
         pager.setCurrentItem(currentPosition,true)
         currentPosition+=1
-
     }
 
     //2초 마다 페이지 넘기기
