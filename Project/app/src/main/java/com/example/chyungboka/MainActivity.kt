@@ -97,6 +97,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         transaction.add(R.id.home_frame,fragment_home)
         transaction.commit()
     }
+
+    //thread를 main 에서 관리하자 (home fragment의 banner에서 쓰이는 것)
+
+
+
+
     //복지 api를 호출하는 기본적인 형태.
     //추후에 알맞게 수정하기
     //호출방법 : NetworkThread().start()

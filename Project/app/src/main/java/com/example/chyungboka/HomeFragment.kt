@@ -18,7 +18,10 @@ import kotlinx.android.synthetic.main.fragment_home.view.*
  */
 class HomeFragment : Fragment() {
     //viewpager 설정
-    var currentPosition =0
+    var state:String? = null
+    //UIThread U
+
+    var currentPosition =1
     var mainActivity:MainActivity?=null
     var mContext: Context?=null
 
@@ -33,11 +36,13 @@ class HomeFragment : Fragment() {
     val handler= Handler(Looper.getMainLooper()){
         setPage()
         true
+       // if(state.equals("DeActive"))
+         //   break
     }
 
     //페이지 변경하기
     fun setPage(){
-        if(currentPosition==5) currentPosition=0
+        if(currentPosition==5) currentPosition=1
         pager.setCurrentItem(currentPosition,true)
         currentPosition+=1
     }
@@ -46,7 +51,7 @@ class HomeFragment : Fragment() {
     inner class PagerRunnable:Runnable{
         override fun run() {
             while(true){
-                Thread.sleep(2000)
+                Thread.sleep(3000)
                 handler.sendEmptyMessage(0)
             }
         }
@@ -61,15 +66,26 @@ class HomeFragment : Fragment() {
         val adapter=ViewPagerAdapter()
         view.pager.adapter=adapter
 
-        //버튼 클릭시 2page로
+        state = "Active"
+        //버튼 클릭시 다음 page로 바로
+        /*
         view.nextButton.setOnClickListener {
-            currentPosition=2
-            view.pager.setCurrentItem(2, true)
+            currentPosition+=1
+            view.pager.setCurrentItem(currentPosition, true)
         }
+        */
 
         //뷰페이저 넘기는 쓰레드
         val thread=Thread(PagerRunnable())
         thread.start()
         return view
     }
+
+    /*
+    fun onStop(){
+        super.onStop()
+        state = "DeActive"
+        Thread.interrupt()
+    }
+    */
 }
