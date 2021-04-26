@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     val fragment1:SearchFragment= SearchFragment()
     val fragment2:ClassifyFragment= ClassifyFragment()
     var home:Int=0
+    var state:String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

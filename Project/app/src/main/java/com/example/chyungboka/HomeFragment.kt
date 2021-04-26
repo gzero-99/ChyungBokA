@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.fragment_home.view.*
  */
 class HomeFragment : Fragment() {
     //viewpager 설정
-    var state:String? = null
+    //var state:String? = null
     //UIThread U
 
     var currentPosition =1
@@ -66,7 +66,7 @@ class HomeFragment : Fragment() {
         val adapter=ViewPagerAdapter()
         view.pager.adapter=adapter
 
-        state = "Active"
+        //state = "Active"
         //버튼 클릭시 다음 page로 바로
         /*
         view.nextButton.setOnClickListener {
