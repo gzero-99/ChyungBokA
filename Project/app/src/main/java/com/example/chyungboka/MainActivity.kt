@@ -10,12 +10,15 @@ import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.main_toolbar.*
 
+
+
+
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     val fragment_home:HomeFragment= HomeFragment()
     val fragment1:SearchFragment= SearchFragment()
     val fragment2:ClassifyFragment= ClassifyFragment()
     var home:Int=0
-    var state:String? = null
+    //var state:String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

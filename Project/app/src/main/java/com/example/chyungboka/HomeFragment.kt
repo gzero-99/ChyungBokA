@@ -36,8 +36,8 @@ class HomeFragment : Fragment() {
     val handler= Handler(Looper.getMainLooper()){
         setPage()
         true
-       // if(state.equals("DeActive"))
-         //   break
+       //if(state.equals("DeActive"))
+         //  break
     }
 
     //페이지 변경하기
@@ -47,7 +47,7 @@ class HomeFragment : Fragment() {
         currentPosition+=1
     }
 
-    //2초 마다 페이지 넘기기
+    //3초 마다 페이지 넘기기
     inner class PagerRunnable:Runnable{
         override fun run() {
             while(true){
