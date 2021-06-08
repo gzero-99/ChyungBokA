@@ -10,6 +10,8 @@ import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
+//import android.widget.ImageView;
+
 
 /**
  * A simple [Fragment] subclass.
@@ -24,6 +26,9 @@ class HomeFragment : Fragment() {
     var currentPosition =1
     var mainActivity:MainActivity?=null
     var mContext: Context?=null
+
+
+
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -74,6 +79,10 @@ class HomeFragment : Fragment() {
             view.pager.setCurrentItem(currentPosition, true)
         }
         */
+
+        //홈페이지 연결하기
+
+
 
         //뷰페이저 넘기는 쓰레드
         val thread=Thread(PagerRunnable())
