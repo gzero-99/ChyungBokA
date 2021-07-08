@@ -59,4 +59,14 @@
         <item>5</item>
         <item>6</item>
     </string-array>
+
+    <!-- 홈 화면 추천 홈페이지 목록
+    <string-array name="homepageSites">
+        <item>https://www.gov.kr</item>
+        <item>https://www.work.go.kr</item>
+        <item>https://www.suwon.go.kr</item>
+        <item>https://www.yongin.go.kr</item>
+    </string-array>
+    -->
+
 </resources>

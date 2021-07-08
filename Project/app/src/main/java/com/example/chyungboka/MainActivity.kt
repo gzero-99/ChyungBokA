@@ -10,11 +10,15 @@ import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.main_toolbar.*
 
+
+
+
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     val fragment_home:HomeFragment= HomeFragment()
     val fragment1:SearchFragment= SearchFragment()
     val fragment2:ClassifyFragment= ClassifyFragment()
     var home:Int=0
+    //var state:String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +29,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_baseline_menu_24)
 
         main_navigationView.setNavigationItemSelectedListener(this)
+
+
     }
 
     //툴바에 홈키 만들기기
@@ -97,6 +103,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         transaction.add(R.id.home_frame,fragment_home)
         transaction.commit()
     }
+
+    //thread를 main 에서 관리하자 (home fragment의 banner에서 쓰이는 것)
+
+
+
+
     //복지 api를 호출하는 기본적인 형태.
     //추후에 알맞게 수정하기
     //호출방법 : NetworkThread().start()

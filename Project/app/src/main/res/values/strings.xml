@@ -8,4 +8,18 @@
     <string name="houseHold">가구유형</string>
     <string name="field">분야</string>
     <string name="disability">장애유형</string>
+
+
+    <!--home fragment button-->
+    <string name ="customSearch">맞춤검색</string>
+    <string name ="recommended">추천복지</string>
+    <string name ="latestWelfare">최신복지</string>
+    <string name ="linkedSite">연계사이트</string>
+
+    <!--home fragment hompage imageview and textview-->
+    <string name ="government24">정부24</string>
+    <string name ="worknet">워크넷</string>
+    <string name ="suwonsi">수원시</string>
+    <string name ="yonginsi">용인시</string>
+
 </resources>
