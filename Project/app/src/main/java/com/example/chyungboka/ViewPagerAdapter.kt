@@ -22,11 +22,12 @@ class ViewPagerAdapter :PagerAdapter(){
         //var name = "banner0"+position;
         //view.banner_image.setImageResource(R.drawable.name);
         val p :Int = when(position){
-            1->R.drawable.banner01;
-            2->R.drawable.banner02;
-            3->R.drawable.banner03;
-            else->R.drawable.banner04;
-        }
+            1->R.drawable.b01;
+            2->R.drawable.b02;
+            3->R.drawable.b03;
+            else->R.drawable.b04;
+        }//banner prac file : banner01~04.png
+
         view.banner_image.setImageResource(p);
         container.addView(view)
         return view
