@@ -29,6 +29,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_baseline_menu_24)
 
         main_navigationView.setNavigationItemSelectedListener(this)
+
+
     }
 
     //툴바에 홈키 만들기기

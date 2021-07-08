@@ -1,6 +1,8 @@
 package com.example.chyungboka
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -81,9 +83,27 @@ class HomeFragment : Fragment() {
         */
 
         //홈페이지 연결하기
+        view.imageView1.setImageResource(R.drawable.government24_icon)
+        view.imageView2.setImageResource(R.drawable.worknet_icon)
+        view.imageView3.setImageResource(R.drawable.suwonsi_icon)
+        view.imageView4.setImageResource(R.drawable.yongin_icon)
 
-
-
+        view.imageView1.setOnClickListener(View.OnClickListener {
+            var intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.gov.kr"))
+            startActivity(intent)
+        })
+        view.imageView2.setOnClickListener(View.OnClickListener {
+            var intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.work.go.kr"))
+            startActivity(intent)
+        })
+        view.imageView3.setOnClickListener(View.OnClickListener {
+            var intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.yongin.go.kr"))
+            startActivity(intent)
+        })
+        view.imageView4.setOnClickListener(View.OnClickListener {
+            var intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.gov.kr"))
+            startActivity(intent)
+        })
         //뷰페이저 넘기는 쓰레드
         val thread=Thread(PagerRunnable())
         thread.start()
